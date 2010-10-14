@@ -1,0 +1,51 @@
+Source: syslinux
+Section: utils
+Priority: optional
+Maintainer: Debian Syslinux Maintainers <syslinux@lists.debian-maintainers.org>
+Uploaders:
+ Daniel Baumann <daniel@debian.org>, Otavio Salvador <otavio@debian.org>
+Build-Depends:
+ debhelper (>= 7.0.50~), gcc-multilib [amd64], libc6-dev-i386 [amd64], nasm,
+ python
+Standards-Version: 3.9.1
+Homepage: http://syslinux.zytor.com/
+Vcs-Browser: http://git.debian-maintainers.org/?p=syslinux/syslinux.git
+Vcs-Git: git://git.debian-maintainers.org/git/syslinux/syslinux.git
+
+Package: syslinux
+Architecture: amd64 i386
+Depends:
+ ${misc:Depends}, ${shlibs:Depends}, syslinux-common (= ${binary:Version}),
+Conflicts: syslinux-common (<< 2:4.00)
+Replaces: syslinux-common
+Suggests: dosfstools, mtools
+Description: collection of boot loaders
+ SYSLINUX is a collection of boot loaders which operates off Linux ext2/3/4 or
+ btrfs filesystems, MS-DOS FAT filesystems, network servers using PXE firmware,
+ or from CD-ROMs.
+
+Package: extlinux
+Architecture: amd64 i386
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Conflicts: syslinux (<< 2:4.00)
+Replaces: syslinux
+Recommends: syslinux-common, syslinux-themes-debian
+Description: collection of boot loaders (ext2/3/4 and btrfs bootloader)
+ SYSLINUX is a collection of boot loaders which operates off Linux ext2/3/4 or
+ btrfs filesystems, MS-DOS FAT filesystems, network servers using PXE firmware,
+ or from CD-ROMs.
+ .
+ This package contains the ext2/3/4 and btrfs bootloader.
+
+Package: syslinux-common
+Architecture: all
+Depends: ${misc:Depends}
+Conflicts: syslinux (<< 2:4.00)
+Replaces: syslinux
+Recommends: libcrypt-passwdmd5-perl, libdigest-sha1-perl
+Description: collection of boot loaders (common files)
+ SYSLINUX is a collection of boot loaders which operates off Linux ext2/3/4 or
+ btrfs filesystems, MS-DOS FAT filesystems, network servers using PXE firmware,
+ or from CD-ROMs.
+ .
+ This package contains common files.

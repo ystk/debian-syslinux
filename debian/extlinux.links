@@ -1,0 +1,5 @@
+/usr/sbin/extlinux-install			/usr/sbin/install-extlinux
+/usr/share/man/man8/extlinux-install.8.gz	/usr/share/man/man8/install-extlinux.8.gz
+
+/usr/sbin/extlinux-update			/usr/sbin/update-extlinux
+/usr/share/man/man8/extlinux-update.8.gz	/usr/share/man/man8/update-extlinux.8.gz

@@ -1,0 +1,65 @@
+#!/bin/sh
+
+set -e
+
+. /usr/share/debconf/confmodule
+
+case "${1}" in
+	configure)
+		db_version 2.0
+
+		db_get extlinux/install
+		_INSTALL="${RET}" # boolean
+
+		db_stop
+
+		case "${_INSTALL}" in
+			true)
+				for _LOCATION in /boot/extlinux /boot/boot/exlinux /extlinux
+				do
+					if [ -e "${_LOCATION}" ]
+					then
+						_DIRECTORY="${_LOCATION}"
+						break
+					fi
+				done
+
+				_DIRECTORY="${_DIRECTORY:-/boot/extlinux}"
+
+				mkdir -p "${_DIRECTORY}"
+				extlinux-update
+
+				. /etc/default/extlinux
+
+				if echo ${EXTLINUX_ROOT} | grep -qs UUID
+				then
+					_DEVICE="/dev/disk/by-uuid/$(echo ${EXTLINUX_ROOT} | awk -F= '{ print $3 }')"
+				else
+					_DEVICE="$(echo ${EXTLINUX_ROOT} | awk -F= '{ print $2 }' | sed -e 's|[0-9]||g')"
+				fi
+
+				extlinux-install "${_DEVICE}"
+				;;
+
+			*)
+				if [ -x /etc/kernel/postinst.d/zz-extlinux ]
+				then
+					/etc/kernel/postinst.d/zz-extlinux
+				fi
+				;;
+		esac
+		;;
+
+	abort-upgrade|abort-remove|abort-deconfigure)
+
+		;;
+
+	*)
+		echo "postinst called with unknown argument \`${1}'" >&2
+		exit 1
+		;;
+esac
+
+#DEBHELPER#
+
+exit 0

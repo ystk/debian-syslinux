@@ -1,0 +1,45 @@
+syslinux
+--------
+
+Floppy images
+=============
+
+As of syslinux 4.01+dfsg-1, the syslinux package doesn't contain premade floppy
+images anymore. Floppy drives are to be considered extinct in 2010.
+
+However, if still want floppy images, you can produce them on your own:
+
+1. install mtools:
+
+  # apt-get install mtools
+
+2. build the images:
+
+  # for SIZE in 720 1200 1440 1743; \
+    do \
+	dd if=/dev/zero of=img${SIZE}k bs=1k count=${SIZE};
+    done
+
+  # for DRIVE in a: b: c: d:;\
+    do \
+	MTOOLSRC=/usr/share/syslinux/examples/mtoolsrc \
+	mformat ${DRIVE}; \
+    done
+
+  # for SIZE in 720 1200 1440 1743; \
+    do \
+	syslinux -s debian/build/img${SIZE}k; \
+    done
+
+3. be happy :)
+
+
+BIOS+EFI netboot
+================
+
+As of syslinux 5 (with splitout loaders) and syslinux 6 (added efi support),
+it becomes a bit more tricky to fiddle things arround. If you want to
+have both bios and efi32/efi64 boot support from one single tftp boot directory,
+have a look at: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=720589
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 12 Jul 2010 19:22:36 +0200

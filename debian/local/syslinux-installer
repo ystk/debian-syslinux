@@ -1,0 +1,94 @@
+#!/bin/sh -e
+
+. /usr/share/debconf/confmodule
+
+if [ "$1" ]; then
+	ROOT=$1
+	chroot=chroot
+else
+	ROOT=
+	chroot=
+fi
+
+newline="
+"
+
+db_capb backup
+
+log() {
+	logger -t syslinux-installer "$@"
+}
+
+error() {
+	log "error: $@"
+}
+
+info() {
+	log "info: $@"
+}
+
+findfs () {
+	mount | grep "on $ROOT${1%/} " | tail -n1 | cut -d' ' -f1
+}
+
+EXTLINUX="extlinux"
+
+ARCH="$(archdetect)"
+info "architecture: $ARCH"
+
+rootfs=$(findfs /)
+bootfs=$(findfs /boot)
+[ -n "$bootfs" ] || bootfs="$rootfs"
+
+db_input critical syslinux-installer/bootdev || true
+if ! db_go; then
+	if [ "$q" ]; then
+		state=1
+	else
+		# back up to menu
+		db_progress STOP
+		exit 10
+	fi
+else
+	db_get syslinux-installer/bootdev
+	bootdev=$RET
+fi
+
+exit_code=0
+apt-install $EXTLINUX || exit_code=$?
+
+if [ $exit_code -ne 0 ] ; then
+	db_progress STOP
+	info "Calling 'apt-install $EXTLINUX' failed"
+	db_subst syslinux-installer/apt-install-failed EXTLINUX "$EXTLINUX"
+	db_input critical syslinux-installer/apt-install-failed || true
+	if ! db_go; then
+		exit 10 # back up to menu
+	fi
+	exit 1
+fi
+
+info "Installing extlinux on '$bootdev'"
+
+info "Running in-target extlinux-install \"$bootdev\""
+if log-output -t syslinux-installer in-target extlinux-install "$bootdev"; then
+	info "extlinux-install ran successfully"
+else
+	error "Running 'extlinux-install \"$bootdev\"' failed."
+	db_subst syslinux-installer/extlinux-install-failed BOOTDEV "$bootdev"
+	db_input critical syslinux-installer/extlinux-install-failed || [ $? -eq 30 ]
+	db_go || true
+	exit 1
+fi
+
+info "Running in-target extlinux-update"
+if log-output -t syslinux-installer in-target extlinux-update; then
+	info "extlinux-update ran successfully"
+	db_go || true
+        exit 0
+else
+	error "Running 'in-target extlinux-update' failed."
+	db_input critical syslinux-installer/extlinux-update-failed || [ $? -eq 30 ]
+	db_go || true
+	exit 1
+fi

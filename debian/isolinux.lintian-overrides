@@ -1,0 +1,3 @@
+isolinux: hardening-no-fortify-functions
+isolinux: hardening-no-relro
+isolinux: script-with-language-extension usr/bin/isohybrid.pl

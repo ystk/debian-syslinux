@@ -1,0 +1,3 @@
+usr/bin/extlinux
+usr/lib/syslinux/mbr/*mbr.bin		/usr/lib/EXTLINUX
+usr/share/man/man1/extlinux.1

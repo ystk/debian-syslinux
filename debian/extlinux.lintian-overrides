@@ -1,0 +1,3 @@
+extlinux: embedded-library
+extlinux: hardening-no-relro
+extlinux: hardening-no-fortify-functions

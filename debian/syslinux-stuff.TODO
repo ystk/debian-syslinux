@@ -1,0 +1,13 @@
+* Add --root-directory support to syslinux-install.
+* Present a list of devices where to write extlinux to in debconf handling.
+* Use po files for extlinux scripts.
+* Include preprocessed keyboard definitions, look for 'Keyboard remapping ' in
+  https://wiki.archlinux.org/index.php/Syslinux
+* use extlinux.d/pxelinux.d etc., have them include the same copy from debian/local
+
+* update lintian overrides
+* embedd syslinux themes
+* extlinux-update: write boot target list into boot.txt so that 'simple' default themes can use it
+* drop efi32 files on amd64, and efi64 files on i386
+
+* change gnu-efi package to be able to build syslinux without embedded gnu-efi

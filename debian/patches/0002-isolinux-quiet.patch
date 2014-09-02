@@ -1,0 +1,41 @@
+Author: Daniel Baumann <mail@daniel-baumann.ch>
+Description: Making isolinux quiet by enabling some output only in verbose mode.
+
+diff -Naurp syslinux.orig/core/isolinux.asm syslinux/core/isolinux.asm
+--- syslinux.orig/core/isolinux.asm
++++ syslinux/core/isolinux.asm
+@@ -260,15 +260,21 @@ _start_common:
+ 		mov eax,[si]
+ 		mov [GetlinsecPtr],eax
+ 
++%ifdef VERBOSE_MESSAGES
+ 		; Show signs of life
+ 		mov si,syslinux_banner
+ 		call writestr_early
++%endif
++
+ %ifdef DEBUG_MESSAGES
+ 		mov si,copyright_str
++		call writestr_early
+ %else
++%ifdef VERBOSE_MESSAGES
+ 		mov si,[BIOSName]
+-%endif
+ 		call writestr_early
++%endif
++%endif
+ 
+ 		;
+ 		; Before modifying any memory, get the checksum of bytes
+@@ -1128,9 +1134,11 @@ all_read:
+ 
+ ; Tell the user we got this far...
+ %ifndef DEBUG_MESSAGES			; Gets messy with debugging on
++%ifdef VERBOSE_MESSAGES
+ 		mov si,copyright_str
+ 		pm_call pm_writestr
+ %endif
++%endif
+ 
+ ;
+ ; Now we're all set to start with our *real* business.	First load the

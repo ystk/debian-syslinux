@@ -1,0 +1,2 @@
+usr/lib/syslinux-dev/efi32/*.efi	/usr/lib/SYSLINUX.EFI/efi32
+usr/lib/syslinux-dev/efi64/*.efi	/usr/lib/SYSLINUX.EFI/efi64

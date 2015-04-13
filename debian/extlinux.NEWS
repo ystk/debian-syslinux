@@ -1,8 +1,0 @@
-extlinux (3:6.03~pre14+dfsg-1) unstable; urgency=low
-
-  Starting with syslinux 6 the extlinux package no longer contains the
-  bootloader integration code, it was moved to the syslinux-stuff package
-  in order to provide bootloader integration for all syslinux bootloaders
-  (at a later point).
-
- -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 11 Jun 2014 17:21:38 +0200

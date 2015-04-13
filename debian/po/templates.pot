@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: syslinux\n"
 "Report-Msgid-Bugs-To: syslinux@packages.debian.org\n"
-"POT-Creation-Date: 2014-02-24 17:53+0100\n"
+"POT-Creation-Date: 2014-08-24 00:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,32 +17,29 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Type: boolean
+#. Type: title
 #. Description
-#: ../syslinux-stuff.templates:1001
-msgid "Should EXTLINUX be installed to the MBR?"
+#: ../extlinux.templates:1001
+msgid "EXTLINUX"
 msgstr ""
 
-#. Type: boolean
+#. Type: note
 #. Description
-#: ../syslinux-stuff.templates:1001
-msgid ""
-"If you choose this option, EXTLINUX will be automatically written to the MBR "
-"of your disk. The current MBR will be saved to a file in /boot."
+#: ../extlinux.templates:2001
+msgid "No bootloader integration code anymore"
 msgstr ""
 
-#. Type: boolean
+#. Type: note
 #. Description
-#: ../syslinux-stuff.templates:1001
-msgid ""
-"Otherwise, EXTLINUX can be manually setup as described in /usr/share/doc/"
-"extlinux/README.Debian."
+#: ../extlinux.templates:2001
+msgid "The extlinux package does not ship bootloader integration anymore."
 msgstr ""
 
-#. Type: boolean
+#. Type: note
 #. Description
-#: ../syslinux-stuff.templates:1001
+#: ../extlinux.templates:2001
 msgid ""
-"Note: The automatic installation currently only works if your root partition "
-"is on the disk to which MBR extlinux should be installed into."
+"If you are upgrading to this version of EXTLINUX your system will not boot "
+"any longer if EXTLINUX was the only configured bootloader. Please install "
+"GRUB."
 msgstr ""

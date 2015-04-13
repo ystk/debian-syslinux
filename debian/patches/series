@@ -1,9 +1,4 @@
-0001-verbose-messages.patch
-0002-isolinux-quiet.patch
-0003-pxelinux-quiet.patch
-0004-ldlinux-quiet.patch
-0005-conffiles.patch
-0006-digest-sha.patch
-0007-gfxboot-menu-label.patch
-0008-extlinux-manpage.patch
-0009-gnu-efi-git.patch
+0001-digest-sha.patch
+0002-gfxboot-menu-label.patch
+0003-extlinux-manpage.patch
+0004-gnu-efi-git.patch

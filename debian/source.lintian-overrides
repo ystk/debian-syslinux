@@ -1,2 +1,0 @@
-syslinux source: missing-build-dependency dpkg-dev (>= 1.16.1~)
-syslinux source: not-binnmuable-any-depends-all syslinux -> syslinux-common

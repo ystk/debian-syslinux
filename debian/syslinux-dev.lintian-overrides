@@ -1,3 +1,0 @@
-syslinux-dev: arch-independent-package-contains-binary-or-object
-syslinux-dev: embedded-library
-syslinux-dev: shared-lib-without-dependency-information

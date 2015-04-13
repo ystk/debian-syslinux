@@ -1,55 +1,48 @@
-# Russian translation of extlinux debconf templates.
-# Copyright (C) 2010 Yuri Kozlov <yuray@komyakino.ru>
+# Russian debconf translations for the syslinux package
+# Copyright (C) 2014 Yuri Kozlov <yuray@komyakino.ru>
 # This file is distributed under the same license as the syslinux package.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: syslinux 2:4.02+dfsg-1\n"
+"Project-Id-Version: syslinux 3_6.03~pre20+dfsg-3\n"
 "Report-Msgid-Bugs-To: syslinux@packages.debian.org\n"
-"POT-Creation-Date: 2014-02-24 17:53+0100\n"
-"PO-Revision-Date: 2010-07-16 10:21+0400\n"
+"POT-Creation-Date: 2014-08-24 00:12+0200\n"
+"PO-Revision-Date: 2014-09-13 12:03+0400\n"
 "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#. Type: boolean
+#. Type: title
 #. Description
-#: ../syslinux-stuff.templates:1001
-msgid "Should EXTLINUX be installed to the MBR?"
-msgstr "Установить EXTLINUX в MBR?"
+#: ../extlinux.templates:1001
+msgid "EXTLINUX"
+msgstr "EXTLINUX"
 
-#. Type: boolean
+#. Type: note
 #. Description
-#: ../syslinux-stuff.templates:1001
+#: ../extlinux.templates:2001
+msgid "No bootloader integration code anymore"
+msgstr "Удалён код внедрения системного загрузчика"
+
+#. Type: note
+#. Description
+#: ../extlinux.templates:2001
+msgid "The extlinux package does not ship bootloader integration anymore."
+msgstr "Пакет extlinux больше не содержит системный загрузчик."
+
+#. Type: note
+#. Description
+#: ../extlinux.templates:2001
 msgid ""
-"If you choose this option, EXTLINUX will be automatically written to the MBR "
-"of your disk. The current MBR will be saved to a file in /boot."
+"If you are upgrading to this version of EXTLINUX your system will not boot "
+"any longer if EXTLINUX was the only configured bootloader. Please install "
+"GRUB."
 msgstr ""
-"Если вы ответите утвердительно, то EXTLINUX будет автоматически записан MBR "
-"жёсткого диска. Имеющийся MBR будет сохранён в файл в каталог /boot."
-
-#. Type: boolean
-#. Description
-#: ../syslinux-stuff.templates:1001
-msgid ""
-"Otherwise, EXTLINUX can be manually setup as described in /usr/share/doc/"
-"extlinux/README.Debian."
-msgstr ""
-"Также EXTLINUX можно настроить вручную как описано в файле /usr/share/doc/"
-"extlinux/README.Debian."
-
-#. Type: boolean
-#. Description
-#: ../syslinux-stuff.templates:1001
-msgid ""
-"Note: The automatic installation currently only works if your root partition "
-"is on the disk to which MBR extlinux should be installed into."
-msgstr ""
-"Замечание: в данный момент автоматическая установка работает только если "
-"корневой раздел расположен на диске, в MBR которого должен быть установлен "
-"extlinux."
+"Если вы выполните обновление до этой версии EXTLINUX, то система больше "
+"не будет загружаться, если EXTLINUX работал как системный загрузчик. "
+"Установите GRUB."

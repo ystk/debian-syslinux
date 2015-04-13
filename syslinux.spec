@@ -1,6 +1,6 @@
 # -*- rpm -*-
-%define RPMVERSION 6.02.18
-%define VERSION    6.03-pre18
+%define RPMVERSION 6.03
+%define VERSION    6.03
 Summary: Kernel loader which uses a FAT, ext2/3 or iso9660 filesystem or a PXE network
 Name: syslinux
 Version: %{RPMVERSION}

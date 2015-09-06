@@ -1,3 +1,12 @@
+syslinux (3:6.03+dfsg-5+deb8u1) jessie; urgency=low
+
+  * Cherry-pick upstream patches that fix booting on some Chromebooks
+    (Closes: #780765):
+    - 0005-load-linux-correct-type.patch
+    - 0006-load-linux-protected-mode.patch
+
+ -- intrigeri <intrigeri@debian.org>  Tue, 18 Aug 2015 17:21:55 +0200
+
 syslinux (3:6.03+dfsg-5) unstable; urgency=low
 
   * Moving source lintian-overrides to newer location.

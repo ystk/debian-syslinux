@@ -4,3 +4,4 @@
 0004-gnu-efi-git.patch
 0005-load-linux-correct-type.patch
 0006-load-linux-protected-mode.patch
+0017-isohdpfx.S-correct-heads-sectors.patch

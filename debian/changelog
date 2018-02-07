@@ -1,3 +1,11 @@
+syslinux (3:6.03+dfsg-5+deb8u2) jessie; urgency=medium
+
+  * Add patch from upstream to fix boot problem for old BIOS firmware from
+    around 2005 by correcting the C/H/S order (thanks Thomas Schmitt,
+    Closes: #879004).
+
+ -- Lukas Schwaighofer <lukas@schwaighofer.name>  Sun, 29 Oct 2017 19:12:43 +0100
+
 syslinux (3:6.03+dfsg-5+deb8u1) jessie; urgency=low
 
   * Cherry-pick upstream patches that fix booting on some Chromebooks
